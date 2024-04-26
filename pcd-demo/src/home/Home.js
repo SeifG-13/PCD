@@ -2,12 +2,19 @@ import React from 'react'
 import "./Home.css"
 import Footer from "./footer/Footer.js"
 import Navbar from './navbar/Navbar.js'
-import { useEffect, useState } from "react";
+import { useEffect, useState , useRef  } from "react";
 
 
 const Home = () => {
 	const [files, setFiles] = useState();
   const [previews, setPreviews] = useState();
+  const [carouselDom, setCarouselDom] = useState(null);
+  const [SliderDom, setSliderDom] = useState(null);
+  const [thumbnailBorderDom, setThumbnailBorderDom] = useState(null);
+  const [thumbnailItemsDom, setThumbnailItemsDom] = useState([]);
+  const [timeDom, setTimeDom] = useState(null);
+  const [suivantDom, setSuivantDom] = useState(null);
+  const [precedentDom, setPrecedentDom] = useState(null);
 
   // rendering previews
   useEffect(() => {
@@ -28,8 +35,9 @@ const Home = () => {
   }, [files]);
 
   
-// slder
 
+// slder
+useEffect(() => {
 let suivantDom = document.getElementById('suivant');
 let precedentDom = document.getElementById('precedent');
 
@@ -80,15 +88,14 @@ function showSlider(type){
         suivantDom.click();
     }, timeAutoSuivant);
 }
-
-
+}, []);
 
     return (
         <>
             <Navbar />
             <div className="trapeze">
-                <div class="glitch-wrapper">
-                    <div class="glitch" data-glitch="FRAMEWARES">FRAMEWARES</div>
+                <div className="glitch-wrapper">
+                    <div className="glitch" data-glitch="FRAMEWARES">FRAMEWARES</div>
                  </div>
                  </div>
 				 <input
@@ -108,47 +115,47 @@ function showSlider(type){
 
 {/* slider */}
 
-    <div class="carousel-slider">
+    <div className="carousel-slider">
       
-        <div class="list-slider">
-            <div class="item-slider">
+        <div className="list-slider">
+            <div className="item-slider">
                 <img src="/assets/1.png"/>
-                <div class="content-slider">
-                    <div class="author-slider">PCD</div>
-                    <div class="title-slider">WEB</div>
-                    <div class="topic-slider">WAREFRAME</div>
-                    <div class="des-slider">
+                <div className="content-slider">
+                    <div className="author-slider">PCD</div>
+                    <div className="title-slider">WEB</div>
+                    <div className="topic-slider">WAREFRAME</div>
+                    <div className="des-slider">
                        
                         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere ab et quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit tempora at laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
                     </div>
-                    <div class="buttons-slider">
+                    <div className="buttons-slider">
                         <button>SEE MORE</button>
                         <button>SUBSCRIBE</button>
                     </div>
                 </div>
             </div>
-            <div class="item-slider">
+            <div className="item-slider">
                 <img src="/assets/2.png"/>
-                <div class="content-slider">
-				<div class="author-slider">PCD</div>
-                    <div class="title-slider">WEB</div>
-                    <div class="topic-slider">WAREFRAME</div>
-                    <div class="des-slider">
+                <div className="content-slider">
+				<div className="author-slider">PCD</div>
+                    <div className="title-slider">WEB</div>
+                    <div className="topic-slider">WAREFRAME</div>
+                    <div className="des-slider">
                         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere ab et quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit tempora at laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
                     </div>
-                    <div class="buttons-slider">
+                    <div className="buttons-slider">
                         <button>SEE MORE</button>
                         <button>SUBSCRIBE</button>
                     </div>
                 </div>
             </div>
-            <div class="item-slider">
+            <div className="item-slider">
                 <img src="/assets/3.png"/>
-                <div class="content-slider">
-				<div class="author-slider">PCD</div>
-                    <div class="title-slider">WEB</div>
-                    <div class="topic-slider">WAREFRAME</div>
-                    <div class="des-slider">
+                <div className="content-slider">
+				<div className="author-slider">PCD</div>
+                    <div className="title-slider">WEB</div>
+                    <div className="topic-slider">WAREFRAME</div>
+                    <div className="des-slider">
                         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere ab et quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit tempora at laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
                     </div>
                     <div class="buttons-slider">
@@ -158,36 +165,36 @@ function showSlider(type){
                 </div>
             </div>
         </div>
-        <div class="thumbnail-slider">
-            <div class="item-slider">
+        <div className="thumbnail-slider">
+            <div className="item-slider">
                 <img src="/assets/1.png"/>
-                <div class="content-slider">
-                    <div class="title-slider">
+                <div className="content-slider">
+                    <div className="title-slider">
                         Name Slider
                     </div>
-                    <div class="description-slider">
+                    <div className="description-slider">
                         Description
                     </div>
                 </div>
             </div>
-            <div class="item-slider">
+            <div className="item-slider">
                 <img src="/assets/2.png"/>
-                <div class="content-slider">
-                    <div class="title-slider">
+                <div className="content-slider">
+                    <div className="title-slider">
                         Name Slider
                     </div>
-                    <div class="description-slider">
+                    <div className="description-slider">
                         Description
                     </div>
                 </div>
             </div>
-            <div class="item-slider">
+            <div className="item-slider">
                 <img src="/assets/3.png"/>
-                <div class="content-slider">
-                    <div class="title-slider">
+                <div className="content-slider">
+                    <div className="title-slider">
                         Name Slider
                     </div>
-                    <div class="description-slider">
+                    <div className="description-slider">
                         Description
                     </div>
                 </div>
@@ -195,35 +202,35 @@ function showSlider(type){
             
         </div>
 
-        <div class="arrows-slider">
+        <div className="arrows-slider">
             <button id="precedent"> {"<"} </button>
             <button id="suivant"> {">"} </button>
         </div>
-        <div class="time-slider"></div>
+        <div className="time-slider"></div>
     </div>
 
 {/* fin slider */}
 
 
 
-        <div class="section-about">
-			<div class="container-about">
-				<div class="content-section-about">
-					<div class="title-about">
+        <div className="section-about">
+			<div className="container-about">
+				<div className="content-section-about">
+					<div className="title-about">
 						<h1>About Us</h1>
 					</div>
-					<div class="content-about">
+					<div className="content-about">
 						<h3>Lorem ipsum dolor sit amet, consectetur adipisicing</h3>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 						consequat.</p>
-						<div class="button">
+						<div className="button">
 							<a href="">Read More</a>
 						</div>
 					</div>
 					</div>
-				<div class="image-section-about">
+				<div className="image-section-about">
 					<img src="/assets/1.png"/>
 				</div>
 				

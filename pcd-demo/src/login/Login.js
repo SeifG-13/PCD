@@ -1,22 +1,28 @@
-import React from "react";
+import React ,  { useRef, useEffect } from "react";
 import './Login.css';
 
 function Login (){
     
-    const container = document.getElementById('container');
-const registerBtn = document.getElementById('register');
-const loginBtn = document.getElementById('login');
-
-registerBtn.addEventListener('click', () => {
-    container.classList.add("active");
-});
-
-loginBtn.addEventListener('click', () => {
-    container.classList.remove("active");
-});
+    const containerRef = useRef(null);
+    const registerBtnRef = useRef(null);
+    const loginBtnRef = useRef(null);
+  
+    useEffect(() => {
+      const container = containerRef.current;
+      const registerBtn = registerBtnRef.current;
+      const loginBtn = loginBtnRef.current;
+  
+      registerBtn.addEventListener('click', () => {
+        container.classList.add("active");
+      });
+  
+      loginBtn.addEventListener('click', () => {
+        container.classList.remove("active");
+      });
+    });
     return(
         <div className="page">
-            <div class="container" id="container">
+            <div class="container" id="container" ref={containerRef}>
                 <div class="form-container sign-up">
              <form> 
                 <h1>Create Account</h1>
@@ -55,12 +61,12 @@ loginBtn.addEventListener('click', () => {
                 <div class="toggle-panel toggle-left">
                     <h1>Welcome Back!</h1>
                     <p>Enter your personal details to use all of site features</p>
-                    <button class="hidden" id="login">Sign In</button>
+                    <button class="hidden" id="login" ref={loginBtnRef}>Sign In</button>
                 </div>
                 <div class="toggle-panel toggle-right">
                     <h1>Hello, Friend!</h1>
                     <p>Register with your personal details to use all of site features</p>
-                    <button class="hidden" id="register">Sign Up</button>
+                    <button class="hidden" id="register" ref={registerBtnRef}>Sign Up</button>
                 </div>
             </div>
         </div>
